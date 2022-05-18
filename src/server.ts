@@ -5,7 +5,6 @@ import defaultQuery from './config/default.query';
 import dotenv from 'dotenv';
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
-// import graphqlHTTP = require("express-graphql")
 import helmet from 'helmet';
 import indexSchema from './config/schema';
 
