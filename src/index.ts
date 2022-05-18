@@ -1,4 +1,9 @@
-import { server } from "./server";
+import { createQueryBuilder } from './db/database';
+import { initiateQueryBuilder } from './artists/artist.repo';
+import server from './server';
+
+const queryBuilder = createQueryBuilder();
+initiateQueryBuilder(queryBuilder);
 
 const port = process.env.PORT || 4000;
 

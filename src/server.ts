@@ -44,3 +44,5 @@ server.use(
     graphiql: true
   })
 );
+
+export default server;

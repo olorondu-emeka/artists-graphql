@@ -14,7 +14,9 @@ export async function getArtistsWithAlbums(
 ): Promise<ArtistWithAlbums[]> {
   return await queryBuilder<ArtistWithAlbums>('artists')
     .join('albums', 'artists.ArtistId', 'albums.ArtistId')
-    .select('artists.*', 'albums.*');
+    .select('artists.*', 'albums.*')
+    .limit(limit)
+    .offset(offset);
 }
 
 export async function updateName(

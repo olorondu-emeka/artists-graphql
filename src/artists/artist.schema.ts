@@ -10,7 +10,7 @@ const artistSchema = `
     ArtistId: String!
   }
 
-  type QueryParam {
+  input QueryParam {
     limit: Int
     offset: Int
   }
