@@ -11,5 +11,7 @@ export async function getArtists(args: any) {
 
 export async function updateArtistName(args: any) {
   const { artistId, name } = args.body;
-  return await repo.updateName(artistId, name);
+  const updatedArtist = await repo.updateName(artistId, name);
+
+  return updatedArtist;
 }

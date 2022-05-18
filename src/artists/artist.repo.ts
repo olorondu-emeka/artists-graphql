@@ -35,9 +35,16 @@ export async function getArtistsWithAlbums(limit: number, offset: number) {
 export async function updateName(
   artistId: number,
   newName: string
-): Promise<Artist> {
-  const [artist] = await queryBuilder<Artist>('artists')
+): Promise<Artist | null | undefined> {
+  const updateStatus = await queryBuilder<Artist>('artists')
     .where('ArtistId', artistId)
     .update({ Name: newName }, '*');
-  return artist;
+
+  if (!updateStatus) return null;
+
+  const updatedArtist = await queryBuilder<Artist>('artists')
+    .where('ArtistId', artistId)
+    .first();
+
+  return updatedArtist;
 }

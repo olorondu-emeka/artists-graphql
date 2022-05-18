@@ -9,7 +9,7 @@ const schema = buildSchema(`
   }
 
   type RootMutation {
-    updateArtistName(body: UpdateArtistDTO!): Artist!
+    updateArtistName(body: UpdateArtistDTO!): Artist
   }
 
   schema {
