@@ -1,9 +1,11 @@
 import * as indexResolver from './config/resolver';
 
 import cors from 'cors';
+import defaultQuery from './config/default.query';
 import dotenv from 'dotenv';
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
+// import graphqlHTTP = require("express-graphql")
 import helmet from 'helmet';
 import indexSchema from './config/schema';
 
@@ -16,7 +18,6 @@ server.use(express.urlencoded({ extended: true }));
 
 // enable CORS for browser clients
 server.use(cors());
-server.options('*', cors);
 
 // add necessary headers
 server.use(helmet());
@@ -27,7 +28,10 @@ server.use(
   graphqlHTTP({
     schema: indexSchema,
     rootValue: indexResolver,
-    graphiql: true
+    graphiql: {
+      defaultQuery,
+      headerEditorEnabled: true
+    }
   })
 );
 
@@ -41,7 +45,10 @@ server.use(
   graphqlHTTP({
     schema: indexSchema,
     rootValue: indexResolver,
-    graphiql: true
+    graphiql: {
+      defaultQuery,
+      headerEditorEnabled: true
+    }
   })
 );
 

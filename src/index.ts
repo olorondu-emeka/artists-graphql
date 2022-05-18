@@ -1,6 +1,9 @@
 import { createQueryBuilder } from './db/database';
 import { initiateQueryBuilder } from './artists/artist.repo';
+// import { graphqlYoga, PubSub } from "graphql-yoga"
 import server from './server';
+// import './server';
+
 
 const queryBuilder = createQueryBuilder();
 initiateQueryBuilder(queryBuilder);
