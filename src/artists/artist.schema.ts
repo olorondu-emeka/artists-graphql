@@ -16,6 +16,11 @@ const artistSchema = `
     Albums: [Album]!
   }
 
+  type ArtistUpdated {
+      action: String!
+      payload: Artist!
+  }
+
   input QueryParam {
     limit: Int
     offset: Int

@@ -12,9 +12,14 @@ const schema = buildSchema(`
     updateArtistName(body: UpdateArtistDTO!): Artist
   }
 
+  type RootSubscription {
+    artistUpdated: ArtistUpdated!
+  }
+
   schema {
     query: RootQuery,
-    mutation: RootMutation
+    mutation: RootMutation,
+    subscription: RootSubscription
   }
 `);
 

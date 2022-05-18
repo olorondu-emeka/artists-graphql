@@ -1,5 +1,9 @@
 import * as repo from './artist.repo';
 
+import pubSub from '../config/pubSub';
+
+export const ARTIST_UPDATED_TOPIC = 'ARTIST_UPDATED';
+
 export async function getArtists(args: any) {
   const queryParam = args.queryParam ?? {};
 
@@ -13,5 +17,13 @@ export async function updateArtistName(args: any) {
   const { artistId, name } = args.body;
   const updatedArtist = await repo.updateName(artistId, name);
 
+  pubSub.publish(ARTIST_UPDATED_TOPIC, {
+    artistUpdated: { action: 'ARTIST_UPDATED', payload: updatedArtist }
+  });
+
   return updatedArtist;
 }
+
+export const artistUpdated = {
+  subscribe: () => pubSub.asyncIterator(ARTIST_UPDATED_TOPIC)
+};

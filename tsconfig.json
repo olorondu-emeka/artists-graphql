@@ -4,7 +4,8 @@
     "target": "es2018",
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "ESNext.AsyncIterable"
     ],
     "module": "commonjs",
     "moduleResolution": "node",

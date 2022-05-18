@@ -1,3 +1,5 @@
+import {} from 'graphql-subscriptions';
+
 import * as indexResolver from './config/resolver';
 
 import cors from 'cors';
@@ -10,19 +12,19 @@ import indexSchema from './config/schema';
 
 dotenv.config();
 
-const server = express();
+const app = express();
 
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // enable CORS for browser clients
-server.use(cors());
+app.use(cors());
 
 // add necessary headers
-server.use(helmet());
+app.use(helmet());
 
 // mount graphql route
-server.use(
+app.use(
   '/graphql',
   graphqlHTTP({
     schema: indexSchema,
@@ -35,11 +37,11 @@ server.use(
 );
 
 // handle unknown route
-server.use((_req, res, _next) => {
+app.use((_req, res, _next) => {
   return res.status(404).send("Route doesn't exist.");
 });
 
-server.use(
+app.use(
   '/graphql',
   graphqlHTTP({
     schema: indexSchema,
@@ -51,4 +53,4 @@ server.use(
   })
 );
 
-export default server;
+export default app;
