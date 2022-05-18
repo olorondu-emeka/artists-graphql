@@ -5,7 +5,7 @@ const schema = buildSchema(`
   ${artistSchema}
 
   type RootQuery {
-    getArtists(queryParam: QueryParam): [Artist]!
+    getArtists(queryParam: QueryParam): [ArtistWithAlbums]!
   }
 
   type RootMutation {

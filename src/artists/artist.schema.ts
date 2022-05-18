@@ -10,6 +10,12 @@ const artistSchema = `
     ArtistId: String!
   }
 
+  type ArtistWithAlbums {
+    ArtistId: Int!
+    Name: String!
+    Albums: [Album]!
+  }
+
   input QueryParam {
     limit: Int
     offset: Int

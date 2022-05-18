@@ -10,5 +10,5 @@ export interface Album {
 }
 
 export interface ArtistWithAlbums extends Artist {
-  albums: Album[];
+  Albums: Album[];
 }
