@@ -13,7 +13,10 @@ const httpServer = createServer(app);
 
 const wsServer = new WebSocketServer({
   server: httpServer,
-  path: '/graphql'
+  path: '/graphql',
+  handleProtocols: (_protocols: Set<string>, _request) => {
+    return 'graphql-ws';
+  }
 });
 
 useServer({ schema }, wsServer);

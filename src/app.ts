@@ -41,16 +41,4 @@ app.use((_req, res, _next) => {
   return res.status(404).send("Route doesn't exist.");
 });
 
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: indexSchema,
-    rootValue: indexResolver,
-    graphiql: {
-      defaultQuery,
-      headerEditorEnabled: true
-    }
-  })
-);
-
 export default app;
