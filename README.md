@@ -1,8 +1,9 @@
-# Startup Roadmap
-A GraphQL API for the artists project 
+# artists-graphql
+A GraphQL API for the artists project .
 
 ## Brief Description
 artists-graphql is a simple project that demonstrates the capabilities of graphql (query, mutation & subscription). It has the following features:
+
 - The ability to query all artists and the albums for each artist
 - The ability to update an artist's name
 - The ability to subscribe to changes to an individual artist
