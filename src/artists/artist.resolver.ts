@@ -17,7 +17,7 @@ export async function updateArtistName(args: any) {
   const { artistId, name } = args.body;
   const updatedArtist = await repo.updateName(artistId, name);
 
-  await pubSub.publish('artistUpdated', {
+  await pubSub.publish(ARTIST_UPDATED_TOPIC, {
     artistUpdated: { action: 'UPDATED', payload: updatedArtist }
   });
 
@@ -25,5 +25,5 @@ export async function updateArtistName(args: any) {
 }
 
 export const artistUpdated = {
-  subscribe: () => pubSub.asyncIterator('artistUpdated')
+  subscribe: () => pubSub.asyncIterator(ARTIST_UPDATED_TOPIC)
 };
